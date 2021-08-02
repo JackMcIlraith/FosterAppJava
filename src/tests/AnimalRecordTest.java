@@ -33,6 +33,7 @@ public class AnimalRecordTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
+    //TC1 - Create a valid VTR and ensure link to animal
     @Test
     public void createVetTreatmentRecord() throws Exception {
         //Arrange:
@@ -46,7 +47,7 @@ public class AnimalRecordTest {
         Assert.assertEquals(returnedRecord.getTreatmentGiven(), "a test treatment was recorded");
     }
 
-
+    //TC2 - Testing multiple VTR entries
     @Test
     public void numberOfRecordsInVTR() throws Exception {
         //Arrange:
@@ -61,7 +62,7 @@ public class AnimalRecordTest {
     }
 
 
-
+    //TC3 - Test to confirm VTR print works as expected
     @Test
     public void printVTR() throws Exception {
         //Arrange:
@@ -76,7 +77,7 @@ public class AnimalRecordTest {
                 "Treatment given: a test treatment was recorded", outputStreamCaptor.toString().trim());
     }
 
-
+    //TC4 - Test that the animal record interacts with its observers correctly
     @Test
     public void Animal_ObserverPattern_addObserver_notifyObserver_removeObserver_Test() throws Exception {
     //Arrange:
@@ -109,7 +110,7 @@ public class AnimalRecordTest {
 
     }
 
-    //test for invalid date of birth:
+    ////TC5 - test for invalid date of birth:
     @Test(expected = Exception.class)
     public void AnimalRecord_InvalidBirthDate_Test() throws Exception {
         //Arrange
@@ -123,7 +124,7 @@ public class AnimalRecordTest {
         //Assertion done in @test decorator; expected result of test is an Exception
     }
 
-    //test for invalid Species:
+    ////TC6 - test for invalid Species:
     @Test(expected = Exception.class)
     public void AnimalRecord_InvalidSpecies_Test() throws Exception {
         //Arrange
@@ -134,7 +135,7 @@ public class AnimalRecordTest {
         //Assertion done in @test decorator; expected result of test is an Exception
     }
 
-    //test for unique ID's:
+    ////TC7 - test for unique ID's:
     @Test
     public void AnimalRecord_UniqueID_Test() throws Exception {
         //Arrange
