@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class FostererTest {
 
-    //test for invalid name:
+    //TC1 - test for invalid name:
     @Test(expected = Exception.class)
     public void Fosterer_InvalidUserName_Test() throws Exception {
         //Arrange
@@ -16,7 +16,7 @@ public class FostererTest {
             //Assertion done in @test decorator; expected result of test is an Exception
     }
 
-    //test for invalid email:
+    //TC2 - test for invalid email:
     @Test(expected = Exception.class)
     public void Fosterer_InvalidEmail_Test() throws Exception {
         //Arrange
@@ -26,7 +26,7 @@ public class FostererTest {
         //Assertion done in @test decorator; expected result of test is an Exception
     }
 
-    //id incremental and unique
+    //TC3 - id incremental and unique
     @Test
     public void Fosterer_UniqueIncrementalID_Test() throws Exception {
         //Arrange

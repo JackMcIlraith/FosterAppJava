@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Observer;
 
 import static org.junit.Assert.*;
 
@@ -38,7 +39,7 @@ public class AdminTest {
     }
 
 
-//tests: Creating Animal Records
+    //TC1 - Creating Animal Records
     @Test
     public void Admin_createAnimalRecord_Test() throws Exception {
         //Act:
@@ -49,7 +50,7 @@ public class AdminTest {
         Assert.assertNotEquals(createAnimalRecordTestArray.get(0).getName(), "TotallyDifferentNameJustToBeSure");
     }
 
-//tests: Vet Treatment Records
+    //TC2 - Create treatment record for Animal
     @Test
     public void Admin_createNewVetTreatmentRecord_Test() throws Exception {
         //Arrange
@@ -68,7 +69,7 @@ public class AdminTest {
     }
 
 
-//tests: Observer Notification
+    //TC3 - Test observer notification
     @Test
     public void update() {
         //Arrange:

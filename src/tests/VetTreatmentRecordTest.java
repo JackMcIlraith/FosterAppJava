@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class VetTreatmentRecordTest {
 
-    //test for invalid name:
+    //TC1 - test for invalid name:
     @Test(expected = Exception.class)
     public void VetTreatmentRecord_InvalidVetName_Test() throws Exception {
         //Arrange
@@ -18,7 +18,7 @@ public class VetTreatmentRecordTest {
             //Assertion done in @test decorator; expected result of test is an Exception
     }
 
-    //test for valid email:
+    //TC2 - test for valid record:
     @Test
     public void VetTreatmentRecord_ValidVetName_Test() throws Exception {
         //Arrange
@@ -42,7 +42,7 @@ public class VetTreatmentRecordTest {
                 "Treatment given: We tested this animal for tests");
     }
 
-    //test for invalid date of treatment:
+    //TC3 - test for invalid date of treatment:
     @Test(expected = Exception.class)
     public void VetTreatmentRecord_InvalidVetDate_Test() throws Exception {
         //Arrange
