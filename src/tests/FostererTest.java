@@ -8,7 +8,7 @@ public class FostererTest {
 
     //TC1 - test for invalid name:
     @Test(expected = Exception.class)
-    public void Fosterer_InvalidUserName_Test() throws Exception {
+    public void TC1_Fosterer_InvalidUserName_Test() throws Exception {
         //Arrange
         //Act
         Fosterer jimmy = new Fosterer("", "testemail@test.com", "Little House on the Prairie");
@@ -18,7 +18,7 @@ public class FostererTest {
 
     //TC2 - test for invalid email:
     @Test(expected = Exception.class)
-    public void Fosterer_InvalidEmail_Test() throws Exception {
+    public void TC2_Fosterer_InvalidEmail_Test() throws Exception {
         //Arrange
         //Act
         Fosterer jimmy = new Fosterer("Jimmy", "", "Little House on the Prairie");
@@ -28,7 +28,7 @@ public class FostererTest {
 
     //TC3 - id incremental and unique
     @Test
-    public void Fosterer_UniqueIncrementalID_Test() throws Exception {
+    public void TC3_Fosterer_UniqueIncrementalID_Test() throws Exception {
         //Arrange
         Fosterer jimmy = new Fosterer("Jimmy", "testemail@test.com", "Little House on the Prairie");
         Fosterer timmy = new Fosterer("Timmy", "testemail2@test.com", "Nextdoor");

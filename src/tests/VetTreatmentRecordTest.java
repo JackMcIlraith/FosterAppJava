@@ -7,9 +7,9 @@ import java.util.Date;
 
 public class VetTreatmentRecordTest {
 
-    //TC1 - test for invalid name:
+    //TC1 - test for invalid vet name:
     @Test(expected = Exception.class)
-    public void VetTreatmentRecord_InvalidVetName_Test() throws Exception {
+    public void TC1_VetTreatmentRecord_InvalidVetName_Test() throws Exception {
         //Arrange
         Date date = new Date(System.currentTimeMillis());
         //Act
@@ -20,7 +20,7 @@ public class VetTreatmentRecordTest {
 
     //TC2 - test for valid record:
     @Test
-    public void VetTreatmentRecord_ValidVetName_Test() throws Exception {
+    public void TC2_VetTreatmentRecord_ValidVetName_Test() throws Exception {
         //Arrange
         Date date = new Date(System.currentTimeMillis());
         //Act
@@ -44,7 +44,7 @@ public class VetTreatmentRecordTest {
 
     //TC3 - test for invalid date of treatment:
     @Test(expected = Exception.class)
-    public void VetTreatmentRecord_InvalidVetDate_Test() throws Exception {
+    public void TC3_VetTreatmentRecord_InvalidVetDate_Test() throws Exception {
         //Arrange
         Date dateOfVisit = new Date(System.currentTimeMillis() + 100000000);
         Date actualDate = new Date(System.currentTimeMillis());

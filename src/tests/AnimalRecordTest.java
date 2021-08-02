@@ -35,7 +35,7 @@ public class AnimalRecordTest {
 
     //TC1 - Create a valid VTR and ensure link to animal
     @Test
-    public void createVetTreatmentRecord() throws Exception {
+    public void TC1_createVetTreatmentRecord() throws Exception {
         //Arrange:
         testAnimal.createVetTreatmentRecord("TestVet", date, "This is a test", "a test treatment was recorded");
         //Act:
@@ -49,7 +49,7 @@ public class AnimalRecordTest {
 
     //TC2 - Testing multiple VTR entries
     @Test
-    public void numberOfRecordsInVTR() throws Exception {
+    public void TC2_numberOfRecordsInVTR() throws Exception {
         //Arrange:
         AnimalRecord newTestAnimal = new AnimalRecord("Testy2", date, "This is another test animal", Species.Other, Sex.Unknown, false, false);
         //Act:
@@ -64,7 +64,7 @@ public class AnimalRecordTest {
 
     //TC3 - Test to confirm VTR print works as expected
     @Test
-    public void printVTR() throws Exception {
+    public void TC3_printVTR() throws Exception {
         //Arrange:
         AnimalRecord newTestAnimal = new AnimalRecord("Testy2", date, "This is another test animal", Species.Other, Sex.Unknown, false, false);
         //Act:
@@ -79,7 +79,7 @@ public class AnimalRecordTest {
 
     //TC4 - Test that the animal record interacts with its observers correctly
     @Test
-    public void Animal_ObserverPattern_addObserver_notifyObserver_removeObserver_Test() throws Exception {
+    public void TC4_Animal_ObserverPattern_addObserver_notifyObserver_removeObserver_Test() throws Exception {
     //Arrange:
         Admin newTestAdmin = new Admin("Testo", "test@test.com", "This House");
         AnimalRecord newTestAnimal = new AnimalRecord("Testy", date, "This is a test animal", Species.Other, Sex.Unknown, false, false);
@@ -112,7 +112,7 @@ public class AnimalRecordTest {
 
     ////TC5 - test for invalid date of birth:
     @Test(expected = Exception.class)
-    public void AnimalRecord_InvalidBirthDate_Test() throws Exception {
+    public void TC5_AnimalRecord_InvalidBirthDate_Test() throws Exception {
         //Arrange
         Date dateOfBirthAttempted = new Date(System.currentTimeMillis() + 100000000);
         Date actualDate = new Date(System.currentTimeMillis());
@@ -126,7 +126,7 @@ public class AnimalRecordTest {
 
     ////TC6 - test for invalid Species:
     @Test(expected = Exception.class)
-    public void AnimalRecord_InvalidSpecies_Test() throws Exception {
+    public void TC6_AnimalRecord_InvalidSpecies_Test() throws Exception {
         //Arrange
         //Act
 
@@ -137,7 +137,7 @@ public class AnimalRecordTest {
 
     ////TC7 - test for unique ID's:
     @Test
-    public void AnimalRecord_UniqueID_Test() throws Exception {
+    public void TC7_AnimalRecord_UniqueID_Test() throws Exception {
         //Arrange
         AnimalRecord testRecord = new AnimalRecord("Test", date, "Animal", Species.Other, Sex.Unknown, false, false);
         AnimalRecord newTestRecord = new AnimalRecord("Test2", date, "Animal", Species.Other, Sex.Unknown, false, false);

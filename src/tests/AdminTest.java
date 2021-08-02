@@ -41,7 +41,7 @@ public class AdminTest {
 
     //TC1 - Creating Animal Records
     @Test
-    public void Admin_createAnimalRecord_Test() throws Exception {
+    public void TC1_Admin_createAnimalRecord_Test() throws Exception {
         //Act:
         createAnimalRecordTestArray.add(testAdmin.createAnimalRecord("TestAnimalName", date, "TestAnimal", Species.Other, Sex.Unknown, false, false));
         //Assert:
@@ -52,7 +52,7 @@ public class AdminTest {
 
     //TC2 - Create treatment record for Animal
     @Test
-    public void Admin_createNewVetTreatmentRecord_Test() throws Exception {
+    public void TC2_Admin_createNewVetTreatmentRecord_Test() throws Exception {
         //Arrange
         createVTRTestArray.add(testAdmin.createAnimalRecord("TestAnimalName", date, "TestAnimal", Species.Other, Sex.Unknown, false, false));
         //Verify pre-condition (animal is present, but has 0 vet treatment records:
@@ -71,7 +71,7 @@ public class AdminTest {
 
     //TC3 - Test observer notification
     @Test
-    public void update() {
+    public void TC3_update() {
         //Arrange:
         testAnimal.addObserver(testAdmin);
         //Act:
