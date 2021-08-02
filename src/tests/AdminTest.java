@@ -51,8 +51,20 @@ public class AdminTest {
 
 //tests: Vet Treatment Records
     @Test
-    public void createNewVetTreatmentRecord() {
+    public void createNewVetTreatmentRecord() throws Exception {
+        //Arrange
         createVTRTestArray.add(testAdmin.createAnimalRecord("TestAnimalName", date, "TestAnimal", Species.Other, Sex.Unknown, false, false));
+        //Verify pre-condition (animal is present, but has 0 vet treatment records:
+        System.out.println("There are currently " + createVTRTestArray.get(0).numberOfRecordsInVTR() + " records in the animals VTR");
+        System.out.println("We expect zero, as this is a new animal");
+        Assert.assertEquals(createVTRTestArray.get(0).numberOfRecordsInVTR(),0);
+        //Act:
+        System.out.println("Adding one vtr instance");
+        testAdmin.createNewVetTreatmentRecord(0,createVTRTestArray, "VetName", date, "To Test", "Tests attempted");
+        //Assert:
+        System.out.println("There are currently " + createVTRTestArray.get(0).numberOfRecordsInVTR() + " records in the animals VTR");
+        System.out.println("We expect 1, as this is a new animal");
+        Assert.assertEquals(createVTRTestArray.get(0).numberOfRecordsInVTR(),1);
 
     }
 
