@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AnimalRecord implements AnimalSubject {
     private static AtomicInteger animalIdGenerator = new AtomicInteger(0);
+    private final int animalID;
     private String name;
     private Date DOB; //Date of Birth or best estimate
     private String description;
@@ -23,7 +24,16 @@ public class AnimalRecord implements AnimalSubject {
     private ArrayList<VetTreatmentRecord> vtr = new ArrayList<>();//vtr acronym for vet treatment record
     private List<AnimalObservers> animalObservers = new ArrayList<>();
 
-    public AnimalRecord(String name, Date DOB, String description, Species species, Sex sex, boolean isFosterNeeded, boolean isReadyForAdoption) {
+    public AnimalRecord(String name, Date DOB, String description, Species species, Sex sex, boolean isFosterNeeded, boolean isReadyForAdoption) throws Exception {
+        if(name.equals("")){
+            throw new Exception("Invalid name");
+        } else if(DOB.after(new Date(System.currentTimeMillis()))){
+            throw new Exception("Invalid DOB");
+        } else if(species != Species.Cat && species != Species.Dog && species != Species.Other && species != Species.Rabbit){
+            throw new Exception("Invalid species");
+
+        }
+        this.animalID = animalIdGenerator.getAndIncrement();
         this.name = name;
         this.DOB = DOB;
         this.description = description;
@@ -85,5 +95,8 @@ public class AnimalRecord implements AnimalSubject {
         animalObservers.forEach(x -> x.update(this));
     }
 
+    public int getAnimalID() {
+        return animalID;
+    }
 }
 

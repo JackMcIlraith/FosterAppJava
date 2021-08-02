@@ -40,7 +40,7 @@ public class AdminTest {
 
 //tests: Creating Animal Records
     @Test
-    public void createAnimalRecord() {
+    public void Admin_createAnimalRecord_Test() throws Exception {
         //Act:
         createAnimalRecordTestArray.add(testAdmin.createAnimalRecord("TestAnimalName", date, "TestAnimal", Species.Other, Sex.Unknown, false, false));
         //Assert:
@@ -51,7 +51,7 @@ public class AdminTest {
 
 //tests: Vet Treatment Records
     @Test
-    public void createNewVetTreatmentRecord() throws Exception {
+    public void Admin_createNewVetTreatmentRecord_Test() throws Exception {
         //Arrange
         createVTRTestArray.add(testAdmin.createAnimalRecord("TestAnimalName", date, "TestAnimal", Species.Other, Sex.Unknown, false, false));
         //Verify pre-condition (animal is present, but has 0 vet treatment records:
@@ -65,7 +65,6 @@ public class AdminTest {
         System.out.println("There are currently " + createVTRTestArray.get(0).numberOfRecordsInVTR() + " records in the animals VTR");
         System.out.println("We expect 1, as this is a new animal");
         Assert.assertEquals(createVTRTestArray.get(0).numberOfRecordsInVTR(),1);
-
     }
 
 

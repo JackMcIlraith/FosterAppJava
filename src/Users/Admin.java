@@ -19,7 +19,7 @@ public class Admin extends Fosterer implements AnimalObservers {
         this.adminID = adminIdGenerator.getAndIncrement();
     }
 
-    public AnimalRecord createAnimalRecord(String name, Date DOB, String description, Species species, Sex sex, boolean isFosterNeeded, boolean isReadyForAdoption){
+    public AnimalRecord createAnimalRecord(String name, Date DOB, String description, Species species, Sex sex, boolean isFosterNeeded, boolean isReadyForAdoption) throws Exception {
         AnimalRecord newAnimal = new AnimalRecord(name, DOB, description, species, sex, isFosterNeeded, isReadyForAdoption);
         newAnimal.addObserver(this);
         newAnimal.setName(name); //confirm animal has been added successfully via observer notification
@@ -27,7 +27,7 @@ public class Admin extends Fosterer implements AnimalObservers {
     }
 
     //secondary method to allow for incomplete data
-    public AnimalRecord createAnimalRecord(String name, Date DOB, String description, Species species, Sex sex){
+    public AnimalRecord createAnimalRecord(String name, Date DOB, String description, Species species, Sex sex) throws Exception {
         AnimalRecord newAnimal = new AnimalRecord(name, DOB, description, species, sex, false, false);
         newAnimal.addObserver(this);
         newAnimal.notifyObserver();

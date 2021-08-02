@@ -78,26 +78,29 @@ public class AnimalRecordTest {
 
 
     @Test
-    public void addObserver_notifyObserver_removeObserver() throws Exception {
+    public void Animal_ObserverPattern_addObserver_notifyObserver_removeObserver_Test() throws Exception {
+    //Arrange:
+        Admin newTestAdmin = new Admin("Testo", "test@test.com", "This House");
+        AnimalRecord newTestAnimal = new AnimalRecord("Testy", date, "This is a test animal", Species.Other, Sex.Unknown, false, false);
     //Test notification with no observers
     //Assert 1:
         //notify when there are no observers:
-        testAnimal.notifyObserver();
+        newTestAnimal.notifyObserver();
         assertEquals("", outputStreamCaptor.toString().trim());
     //Test: addObserver and notifyObserver
     //Arrange:
-        testAnimal.addObserver(testAdmin);
+        newTestAnimal.addObserver(newTestAdmin);
     //Act:
-        testAnimal.notifyObserver();
+        newTestAnimal.notifyObserver();
     //Assert:
         assertEquals("User Testo has been notified: There has been a change made to Testy", outputStreamCaptor.toString().trim());
     //Test: Adding second Observer:
     //Arrange:
 
-        Admin newTestAdmin = new Admin("Testo2", "test@test.com", "This House");
-        testAnimal.addObserver(newTestAdmin);
+        Admin newTestAdmin2 = new Admin("Testo2", "test@test.com", "This House");
+        newTestAnimal.addObserver(newTestAdmin2);
     //Act:
-        testAnimal.notifyObserver();
+        newTestAnimal.notifyObserver();
     //Assert:
         Assert.assertEquals("User Testo has been notified: There has been a change made to Testy\r\n" +
         "User Testo has been notified: There has been a change made to Testy\r\n" +
@@ -106,13 +109,45 @@ public class AnimalRecordTest {
 
     }
 
-    @Test
-    public void removeObserver() {
-
+    //test for invalid date of birth:
+    @Test(expected = Exception.class)
+    public void AnimalRecord_InvalidBirthDate_Test() throws Exception {
+        //Arrange
+        Date dateOfBirthAttempted = new Date(System.currentTimeMillis() + 100000000);
+        Date actualDate = new Date(System.currentTimeMillis());
+        //Act
+        System.out.println("Input DOB" + dateOfBirthAttempted);
+        System.out.println("actual date:" + actualDate);
+        //Assert
+        AnimalRecord testRecord = new AnimalRecord("Test", dateOfBirthAttempted, "Should fail", Species.Other, Sex.Unknown, false, false);
+        //Assertion done in @test decorator; expected result of test is an Exception
     }
 
+    //test for invalid Species:
+    @Test(expected = Exception.class)
+    public void AnimalRecord_InvalidSpecies_Test() throws Exception {
+        //Arrange
+        //Act
+
+        //Assert
+        AnimalRecord testRecord = new AnimalRecord("Test", date, "Should fail", null, null, false, false);
+        //Assertion done in @test decorator; expected result of test is an Exception
+    }
+
+    //test for unique ID's:
     @Test
-    public void notifyObserver() {
+    public void AnimalRecord_UniqueID_Test() throws Exception {
+        //Arrange
+        AnimalRecord testRecord = new AnimalRecord("Test", date, "Animal", Species.Other, Sex.Unknown, false, false);
+        AnimalRecord newTestRecord = new AnimalRecord("Test2", date, "Animal", Species.Other, Sex.Unknown, false, false);
+        AnimalRecord newestTestRecord = new AnimalRecord("Test3", date, "Animal", Species.Other, Sex.Unknown, false, false);
+        //Assert
+        System.out.println(testRecord.getAnimalID());
+        System.out.println(newTestRecord.getAnimalID());
+        System.out.println(newestTestRecord.getAnimalID());
+        Assert.assertNotEquals(newTestRecord.getAnimalID(),testRecord.getAnimalID());
+        Assert.assertNotEquals(newTestRecord.getAnimalID(),newestTestRecord.getAnimalID());
+        Assert.assertNotEquals(testRecord.getAnimalID(),newestTestRecord.getAnimalID());
 
     }
 }
