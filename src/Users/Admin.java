@@ -14,7 +14,7 @@ public class Admin extends Fosterer implements AnimalObservers {
     private static AtomicInteger adminIdGenerator = new AtomicInteger(0);
     private final int adminID;
 
-    public Admin(String name, String email, String address) {
+    public Admin(String name, String email, String address) throws Exception {
         super(name, email, address);
         this.adminID = adminIdGenerator.getAndIncrement();
     }

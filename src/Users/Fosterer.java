@@ -11,16 +11,22 @@ public class Fosterer extends User {
     private boolean isAvailableToFoster;
 
 //Constructors:
-    public Fosterer(String name, String email, String address) {
-        //Construct with user defined values
-        this.name = name;
-        this.email= email;
-        this.address = address;
-        //Construct with default values
-        this.dateJoined = new Date(System.currentTimeMillis());
-        this.fostererID = idGenerator.getAndIncrement();
-        this.isApprovedToFoster = false;
-        this.isAvailableToFoster = false;
+    public Fosterer(String name, String email, String address) throws Exception {
+        if(name.equals("")){
+            throw new Exception("Invalid name, cannot be blank");
+        } else if (email.equals("")){
+            throw new Exception("Invalid email address");
+        } else {
+            //Construct with user defined values
+            this.name = name;
+            this.email = email;
+            this.address = address;
+            //Construct with default values
+            this.dateJoined = new Date(System.currentTimeMillis());
+            this.fostererID = idGenerator.getAndIncrement();
+            this.isApprovedToFoster = false;
+            this.isAvailableToFoster = false;
+        }
     }
 
 //return or change foster related statuses:
@@ -38,5 +44,9 @@ public class Fosterer extends User {
 
     public void setAvailableToFoster(boolean availableToFoster) {
         isAvailableToFoster = availableToFoster;
+    }
+
+    public int getFostererID() {
+        return fostererID;
     }
 }
